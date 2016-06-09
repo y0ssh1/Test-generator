@@ -26,3 +26,9 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+TODO
+
+- [] 回答の所をInput Fieldにする
+- [] 全問題の一覧と問題を解くときでルーティングを分けてページも作る
