@@ -61,6 +61,15 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # GET /questions/test
+  def test
+    @targets = Question.order("RANDOM()").limit(3)
+  end
+
+  # GET /questions/result
+  def result
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
