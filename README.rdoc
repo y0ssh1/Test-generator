@@ -1,34 +1,30 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Ruby version
 
-Things you may want to cover:
+```
+$ ruby -v
+????
+```
 
-* Ruby version
+=== Database creation
 
-* System dependencies
+```
+$ ./bin/rake db:create
+```
 
-* Configuration
+=== Database initialization
 
-* Database creation
+```
+$ ./bin/rake db:migrate
+$ ./bin/rake db:seed
+```
 
-* Database initialization
+=== How to run the test suite
 
-* How to run the test suite
+There are no tests.
+I will add some test in the future.
 
-* Services (job queues, cache servers, search engines, etc.)
+=== Deployment instructions
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
-
-TODO
-
-- [] 回答の所をInput Fieldにする
-- [] 全問題の一覧と問題を解くときでルーティングを分けてページも作る
+Ask @kagamiz.
