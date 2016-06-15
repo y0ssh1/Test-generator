@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :questions do
     collection do
       get 'test'
-      get 'result'
+      post 'result'
     end
   end
 end
