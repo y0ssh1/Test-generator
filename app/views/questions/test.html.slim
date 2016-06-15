@@ -12,5 +12,5 @@ h1 Questions
             - ss = question.body.split('_____')
             - ss.each_with_index do |s, j|
               = s
-              = text_field_tag i.to_s + " " + j.to_s unless j + 1 == ss.count
+              = text_field_tag i.to_s + "[]" unless j + 1 == ss.count
   = submit_tag "Grading"
