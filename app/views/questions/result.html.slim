@@ -1,0 +1,11 @@
+h1 Questions
+
+table
+  tbody
+    - @targets.each_with_index do |question, i|
+      tr
+        td
+          - ss = question.body.split('_____')
+          - ss.each_with_index do |s, j|
+              = s
+              = @answers[i][j] unless j + 1 == ss.count
