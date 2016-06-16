@@ -1,5 +1,15 @@
 h1 Questions
 
+= @responses.inject(0) { |sum, r| sum + r.count }
+
+span 問中
+
+= count_match @responses, @targets.map { |t| t.answer.split(",") }
+
+span 問正解しました
+
+br
+
 table
   tbody
     br
@@ -7,8 +17,7 @@ table
       tr
         td
           - answer = question.answer.split(",")
-          - ss = question.body + '_____$'
-          - ss = ss.split('_____')
+          - ss = (question.body + '_____$').split('_____')
           - ss.pop
           - ss.each_with_index do |s, j|
               = linebreak_to_br s
@@ -19,3 +28,5 @@ table
                 - else
                   span style="color: #FE2E2E" 
                     = "(回答)#{@responses[i][j]}（解答）#{answer[i]}"
+            
+                
