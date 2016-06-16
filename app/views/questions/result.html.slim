@@ -7,5 +7,5 @@ table
         td
           - ss = question.body.split('_____')
           - ss.each_with_index do |s, j|
-              = s
+              = linebreak_to_br s
               = @answers[i][j] unless j + 1 == ss.count
