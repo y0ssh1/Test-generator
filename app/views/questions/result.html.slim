@@ -5,7 +5,9 @@ table
     - @targets.each_with_index do |question, i|
       tr
         td
-          - ss = question.body.split('_____')
+          - ss = question.body + '_____$'
+          - ss = ss.split('_____')
+          - ss.pop
           - ss.each_with_index do |s, j|
               = linebreak_to_br s
               = @answers[i][j] unless j + 1 == ss.count
