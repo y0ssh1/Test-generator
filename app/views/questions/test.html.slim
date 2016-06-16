@@ -11,7 +11,7 @@ h1 Questions
           td
             - ss = question.body + '_____$'
             - ss = ss.split('_____')
-            - ss.delete('$')
+            - ss.pop
             - ss.each_with_index do |s, j|
               = s
               = text_field_tag i.to_s + "[]" unless j + 1 == ss.count
