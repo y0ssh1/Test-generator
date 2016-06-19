@@ -34,6 +34,10 @@ answers = [
   'Che,cosa,prendi,Prendo,un,caffè'
 ]
 
+set = QuestionSet.create
+
 10.times do |i|
-  Question.create(body: bodies[2*i] + "\n" + bodies[2*i+1], answer: answers[i])
+  set.questions << Question.create(body: bodies[2*i] + "\n" + bodies[2*i+1], answer: answers[i])
 end
+
+set.save!
