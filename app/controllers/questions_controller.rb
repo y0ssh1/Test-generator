@@ -64,12 +64,13 @@ class QuestionsController < ApplicationController
   # GET /questions/test
   def test
     @targets = []
-    max_blank_counts = (params[:size] || "20").to_i
+    blank_counts_max = (params[:size] || "20").to_i
     blank_counts = 0
-    Question.order("RANDOM()").each do |question|
-      blank_counts += question.body.scan(/_____/).size
+
+    Question.where("question_set_id = ?", params[:question_set_id]).order("RANDOM()").each do |question|
       @targets << question
-      break if blank_counts >= max_blank_counts
+      blank_counts += question.body.scan(/_____/).size
+      break if blank_counts >= blank_counts_max
     end
 
     session[:question] = @targets.map { |t| t.id }
