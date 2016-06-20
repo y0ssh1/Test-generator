@@ -1,27 +1,29 @@
 p#notice
-  = notice
-h1
-  | Listing Questions
-table
-  thead
-    tr
-      th
-        | Body
-      th
-        | Answer
-      th[colspan="3"]
-  tbody
-    - @questions.each do |question|
+   = notice
+   
+   Listing Questions
+div class = "container"
+  div class = "table-responsive"
+  table class = "table table-striped table-bordered table-hover"
+    thead
       tr
-        td
-          = question.body
-        td
-          = question.answer
-        td
-          = link_to 'Show', question
-        td
-          = link_to 'Edit', edit_question_path(question)
-        td
-          = link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }
-br
-= link_to 'New Question', new_question_path
+        th
+          | Body
+        th
+          | Answer
+        th[colspan="3"]
+    tbody
+      - @questions.each do |question|
+        tr
+          td
+            = question.body 
+          td
+            = question.answer
+          td
+            = link_to 'Show', question, class: "btn btn-xs btn-default"
+          td
+            = link_to 'Edit', edit_question_path(question), class: "btn btn-xs btn-default"
+          td
+            = link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger"
+  br
+  = link_to 'New Question', new_question_path, class: "btn btn-lg btn-primary"
