@@ -4,9 +4,12 @@ p 問題数を選んでください。
 
 table
   tbody
-    tr
-      td
-        = link_to "全問", controller: "questions", action: "test", size: 100000
-      - [80, 60, 40, 20].each do |size|
+    - QuestionSet.all.each do |question_set|
+      tr
         td
-          = link_to "#{size}問", controller: "questions", action: "test", size: size
+          = "問題集#{question_set.id}:"
+        td
+          = link_to "全問", controller: "questions", action: "test", question_set_id: question_set.id, size: 100000
+        - [80, 60, 40, 20].each do |size|
+          td
+            = link_to "#{size}問", controller: "questions", action: "test", question_set_id: question_set.id, size: size
