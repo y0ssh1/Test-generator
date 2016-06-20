@@ -1,18 +1,12 @@
 h1 Home#select
 
-p
-  = link_to "80問", "/questions/test/80"
+p 問題数を選んでください。
 
-
-p 
-  = link_to "60問", "/questions/test/60"  
-  
-  
-p 
-  = link_to "40問", "/questions/test/20"
-  
-    
-p
-  = link_to "20問", "/questions/test"  
-  
-    
+table
+  tbody
+    tr
+      td
+        = link_to "全問", controller: "questions", action: "test", size: 100000
+      - [80, 60, 40, 20].each do |size|
+        td
+          = link_to "#{size}問", controller: "questions", action: "test", size: size
