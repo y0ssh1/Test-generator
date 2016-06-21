@@ -74,6 +74,7 @@ class QuestionsController < ApplicationController
     end
 
     session[:question] = @targets.map { |t| t.id }
+    puts params[:question_set_id]
   end
 
   # GET /questions/result
