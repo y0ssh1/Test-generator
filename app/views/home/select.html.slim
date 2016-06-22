@@ -1,15 +1,13 @@
-h1 Home#select
-
-p 問題数を選んでください。
-
-table
+table class = "table table-striped table-bordered"
+  thead 
+    p 問題を選んでください
   tbody
     - QuestionSet.all.each do |question_set|
       tr
         td
           = "問題集#{question_set.id}:"
         td
-          = link_to "全問", controller: "questions", action: "test", question_set_id: question_set.id, size: 100000
+          = link_to "全問", class: "btn btn-default", controller: "questions", action: "test", question_set_id: question_set.id, size: 100000
         - [80, 60, 40, 20].each do |size|
           td
-            = link_to "#{size}問", controller: "questions", action: "test", question_set_id: question_set.id, size: size
+            = link_to "#{size}問", controller: "questions", action: "test", question_set_id: question_set.id, size: size, class: "btn btn-default"

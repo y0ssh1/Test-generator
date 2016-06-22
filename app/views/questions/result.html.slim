@@ -1,4 +1,4 @@
-div class = "panel panel-danger"
+div class = "panel panel-primary"
   div class = "panel-heading"
     = "Risposta"
   div class = "panel-body"
@@ -22,4 +22,4 @@ div class = "panel panel-danger"
                     span style="color: #FE2E2E" 
                       = "[(回答)#{@responses[i][j]}（解答）#{answer[j]}]"
 
-= link_to "問題数選択に戻る", controller: "home", action: "select", class: "btn btn-lg btn-primary" 
+= link_to "問題数選択に戻る", "/home/select", class: "btn btn-lg btn-primary" 
