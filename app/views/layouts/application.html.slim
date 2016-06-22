@@ -1,17 +1,16 @@
 doctype html
 html
   head
-    title
-      | TestGenerator
+    title ちくわの穴開け機
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    div id = "header"
+    #header
       = render "shared/header"
-    div id = "content"
+    #content
       = yield
-    div id = "sidebar"
+    #sidebar
       = render "shared/sidebar"
-    div id = "footer"
+    #footer
       = render "shared/footer"
