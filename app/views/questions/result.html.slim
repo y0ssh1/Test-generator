@@ -1,11 +1,9 @@
 .container
   .table-responsive
-    table class = "table table-striped table-bordered"
+    table.table.table-striped.table-bordered
       thead
-        = @responses.inject(0) { |sum, r| sum + r.count }
-        span 問中
-        = count_match @responses, @targets.map { |t| t.answer.split(",") }
-        span 問正解しました
+        = "#{@responses.inject(0) { |sum, r| sum + r.count }}問中"
+        = "#{count_match @responses, @targets.map { |t| t.answer.split(",") }}問正解しました"
       tbody
         br
         - @targets.each_with_index do |question, i|
@@ -23,4 +21,4 @@
                     - else
                       span style="color: #FE2E2E" 
                         = "[(回答)#{@responses[i][j]}（解答）#{answer[j]}]"
-    = link_to "問題数選択に戻る", "/home/select", class: "btn btn-lg btn-primary" 
+  = link_to "問題数選択に戻る", "/home/select", class: "btn btn-lg btn-primary"
