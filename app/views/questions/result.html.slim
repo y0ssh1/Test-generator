@@ -1,7 +1,6 @@
-= "#{@responses.inject(0) { |sum, r| sum + r.count }}問中"
-= "#{count_match @responses, @targets.map { |t| t.answer.split(",") }}問正解しました"
-
 .container
+  = "#{@responses.inject(0) { |sum, r| sum + r.count }}問中"
+  = "#{count_match @responses, @targets.map { |t| t.answer.split(",") }}問正解しました"
   .table-responsive
     table.table.table-striped.table-bordered
       tbody
