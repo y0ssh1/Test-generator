@@ -64,7 +64,7 @@ class QuestionsController < ApplicationController
   # GET /questions/test
   def test
     @targets = []
-    blank_counts_max = (params[:size] || "20").to_i
+    blank_counts_max = params[:size].try(:to_i) || 114514
     blank_counts = 0
 
     Question.where("question_set_id = ?", params[:question_set_id]).order("RANDOM()").each do |question|

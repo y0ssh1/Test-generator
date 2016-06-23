@@ -1,18 +1,15 @@
-#notice
-  = notice
-
-h1 Questions
-
-= form_tag :result_questions, method: :post do
-  table
-    tbody
-      - @targets.each_with_index do |question, i|
-        tr
-          td
-            - ss = question.body + '_____$'
-            - ss = ss.split('_____')
-            - ss.pop
-            - ss.each_with_index do |s, j|
-              = linebreak_to_br s
-              = text_field_tag i.to_s + "[]" unless j + 1 == ss.count
-  = submit_tag "Grading"
+.container
+  = form_tag :result_questions, method: :post do
+    .table-responsive
+      table.table.table-striped.table-bordered
+        tbody
+          - @targets.each_with_index do |question, i|
+            tr
+              td
+                - ss = question.body + '_____$'
+                - ss = ss.split('_____')
+                - ss.pop
+                - ss.each_with_index do |s, j|
+                  = linebreak_to_br s
+                  = text_field_tag i.to_s + "[]" unless j + 1 == ss.count
+    = submit_tag "Submit", class: "btn btn-lg btn-success"
