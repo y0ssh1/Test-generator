@@ -41,3 +41,7 @@ set = QuestionSet.create
 end
 
 set.save!
+
+100.times do
+  QuestionSet.create
+end
