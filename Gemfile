@@ -45,6 +45,11 @@ group :development do
   gem 'spring'
 end
 
+# Slim
 gem 'slim-rails'
-
 gem 'html2slim'
+
+# Bootstrap
+gem 'therubyracer'
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
