@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'home#select'
+
   get 'home/select'
 
   resources :questions do

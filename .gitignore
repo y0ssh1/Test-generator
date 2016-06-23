@@ -17,6 +17,6 @@
 /tmp
 
 /vendor/bundle
-Gemfile.lock
+/Gemfile.lock
 
 .DS_Store

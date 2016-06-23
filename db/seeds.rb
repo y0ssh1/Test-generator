@@ -38,6 +38,15 @@ set = QuestionSet.create
 
 10.times do |i|
   set.questions << Question.create(body: bodies[2*i] + "\n" + bodies[2*i+1], answer: answers[i])
+<<<<<<< HEAD
+=======
+end
+
+set.save!
+
+100.times do
+  QuestionSet.create
+>>>>>>> add-design
 end
 
 set.save!
