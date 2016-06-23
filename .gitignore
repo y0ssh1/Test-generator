@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+/vendor/bundle
+Gemfile.lock
+
+.DS_Store
