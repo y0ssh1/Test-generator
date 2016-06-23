@@ -1,8 +1,11 @@
-div class = "container"
-  div class = "table-responsive"
+.container
+  .table-responsive
     table class = "table table-striped table-bordered"
       thead
-        = "#{@responses.inject(0) { |sum, r| sum + r.count }}問中#{count_match @responses, @targets.map { |t| t.answer.split(",") }}問正解しました"
+        = @responses.inject(0) { |sum, r| sum + r.count }
+        span 問中
+        = count_match @responses, @targets.map { |t| t.answer.split(",") }
+        span 問正解しました
       tbody
         br
         - @targets.each_with_index do |question, i|

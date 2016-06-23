@@ -1,6 +1,6 @@
-= form_tag :result_questions, method: :post do
-  div class = "container"
-    div class = "table-responsive"
+.container
+  .table-responsive
+    = form_tag :result_questions, method: :post do
       table class = "table table-striped table-bordered"
         tbody
           - @targets.each_with_index do |question, i|
