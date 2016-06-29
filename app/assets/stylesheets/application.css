@@ -12,9 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 #content {
   margin-top: 100px;
