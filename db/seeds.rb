@@ -34,6 +34,7 @@ answers = [
   'Che,cosa,prendi,Prendo,un,caffè'
 ]
 
+user = User.create(email: 'hkarasawa@g.ecc.u-tokyo.ac.jp', password: '114514', password_confirmation: '114514')
 set = QuestionSet.create
 
 10.times do |i|
@@ -42,8 +43,9 @@ end
 
 set.save!
 
+user.question_sets << set
+user.save!
+
 100.times do
   QuestionSet.create
 end
-
-set.save!

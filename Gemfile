@@ -51,4 +51,10 @@ gem 'html2slim'
 gem 'therubyracer'
 gem 'less-rails'
 
+# 
 gem 'bower-rails'
+
+# Login
+gem 'bcrypt', '~> 3.1.7'
+gem 'devise'
+gem 'rails_admin'

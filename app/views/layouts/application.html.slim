@@ -9,6 +9,10 @@ html
     #header
       = render "shared/header"
     #content
+      - if notice
+        p.notice = notice
+      - if alert
+        p.alert = alert
       = yield
     #sidebar
       = render "shared/sidebar"
