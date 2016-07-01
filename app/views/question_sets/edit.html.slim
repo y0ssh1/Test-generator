@@ -1,0 +1,21 @@
+.container
+  - if @question_set.owner?(current_user)
+  p <←で囲まれた文字が問題の空白部分になります→>
+  = form_tag @question_set, method: :put do
+    .table-responsive
+      table#question-set-table.table.table-striped.table-bordered.table-hover
+        thead
+          tr
+            th Body
+            th Action
+        tbody
+          - @question_set.questions.each do |question, i|
+            tr
+              - text = question.body
+              - question.answer.split(',').each do |answer|
+                - text.sub!(/_____/, "<#{answer}>")
+              td = text_area_tag 'texts[]', text, size: '80x3'
+              td = button_tag 'Destroy', { type: 'button', confirm: 'Are you sure?', onclick: "$(this).closest('tr').remove()", class: 'btn btn-default delete' }
+    = button_tag 'New Question', { type: 'button', onclick: 'add_row()', class: 'btn btn-lg btn-primary' }
+    = submit_tag 'Update All Questions', class: 'btn btn-lg btn-success'
+    = button_tag 'Back to Question Set Page', class: 'btn btn-lg btn-default'

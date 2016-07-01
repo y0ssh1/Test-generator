@@ -20,5 +20,4 @@
                     - else
                       span style="color: #FE2E2E" 
                         = "[(回答)#{@responses[i][j]}（解答）#{answer[j]}]"
-  / root_pathはそのうちshow_question_set_pathにする
-  = link_to "問題数選択に戻る", root_path, class: "btn btn-lg btn-primary"
+  = link_to "問題数選択に戻る", question_set_path(@question_set), class: "btn btn-lg btn-primary"

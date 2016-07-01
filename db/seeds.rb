@@ -35,10 +35,10 @@ answers = [
 ]
 
 user = User.create(email: 'hkarasawa@g.ecc.u-tokyo.ac.jp', password: '114514', password_confirmation: '114514')
-set = QuestionSet.create
+set = QuestionSet.create(title: '素晴らしき問題集', comment: '素晴らしい問題集です')
 
 10.times do |i|
-  set.questions << Question.create(body: bodies[2*i] + "\n" + bodies[2*i+1], answer: answers[i])
+  set.questions << Question.create(body: bodies[2*i] + "\n" + bodies[2*i+1], answer: answers[i], comment: 'しっかり考えて問いてくださいね')
 end
 
 set.save!
@@ -46,6 +46,6 @@ set.save!
 user.question_sets << set
 user.save!
 
-100.times do
-  QuestionSet.create
+100.times do |i|
+  QuestionSet.create(title: "問題集#{i}", comment: "やらないでいい")
 end

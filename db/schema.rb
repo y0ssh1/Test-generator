@@ -14,6 +14,8 @@
 ActiveRecord::Schema.define(version: 20160629201418) do
 
   create_table "question_sets", force: :cascade do |t|
+    t.string   "title"
+    t.string   "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -24,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160629201418) do
   create_table "questions", force: :cascade do |t|
     t.string   "body"
     t.string   "answer"
+    t.string   "comment"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "question_set_id"
