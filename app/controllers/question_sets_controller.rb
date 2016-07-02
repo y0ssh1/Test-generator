@@ -43,7 +43,8 @@ class QuestionSetsController < ApplicationController
 
   def result
     @question_set = QuestionSet.find(params[:id])
-    @targets = @question_set.questions
+    hash = Question.find(session[:question]).map{ |model| [model.id, model] }.to_h # 該当する３つの文とIDを見つける（順番は適当）
+    @targets = session[:question].map { |id| hash[id] } # 問題文の順番にmodelを並び変える
     @responses = @targets.map.with_index { |v, i| params[i.to_s] } # テキストボックスの値を受け取る
   end
 end
