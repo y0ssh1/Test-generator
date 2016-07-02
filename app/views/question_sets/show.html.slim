@@ -1,3 +1,25 @@
 .container
-  = render partial: 'questions', locals: { question_set: @question_set }
-  = link_to 'New Question', { controller: 'question', action: 'new', question_set_id: "#{question_set.id}", remote: true }, { id: "new-question-button", class: "btn btn-lg btn-primary" }
+  = link_to '問題集の一覧に戻る', question_sets_path
+  - if @question_set.owner?(current_user)
+    = link_to '問題集を編集する', edit_question_set_path(@question_set)
+    = link_to '問題集を削除する', question_set_path(@question_set), method: :delete
+  
+  .table-responsive
+    table.table.table-striped.table-bordered
+      tbody
+        tr
+          td = link_to '全問', controller: 'question_sets', action: 'test'
+          - [80, 60, 40, 20].each do |size|
+            td = link_to "#{size}問", controller: 'question_sets', action: 'test', size: size
+
+  .table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th Body
+        th Answer
+    tbody
+      - @question_set.questions.each do |question|
+        tr
+          td = linebreak_to_br question.body 
+          td = question.answer

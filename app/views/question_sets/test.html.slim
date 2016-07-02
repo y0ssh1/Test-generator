@@ -1,5 +1,5 @@
 .container
-  = form_tag :result_question_set_questions, method: :post do
+  = form_tag result_question_set_path(@question_set), method: :post do
     .table-responsive
       table.table.table-striped.table-bordered
         tbody

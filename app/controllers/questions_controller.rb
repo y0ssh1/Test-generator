@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
-    @question = Question.new
+    @question = Question.new(question_set: QuestionSet.find(params[:question_set_id]))
   end
 
   # GET /questions/1/edit
