@@ -4,7 +4,7 @@
 
 $ ->
   @add_row = ->
-    $('#question-set-table tbody > tr:last').after """
+    $('#question-set-table tbody').append """
       <tr>
         <td><input type='text' name='texts[]'' id='texts_' size='80x3'></td>
         <td><button name='button' type='button' confirm='Are you sure?' id='destroy-question-button' class='btn btn-default delete'>Destroy</button></td>

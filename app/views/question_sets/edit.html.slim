@@ -1,7 +1,13 @@
-.container
-  - if @question_set.owner?(current_user)
-  p <←で囲まれた文字が問題の空白部分になります→>
+- if @question_set.owner?(current_user)
   = form_tag @question_set, method: :put do
+    
+    h2 タイトル
+    = text_field_tag :title, '', class: 'form-control'
+    h3 コメント
+    = text_field_tag :comment, '', class: 'form-control'
+    
+    p <←で囲まれた文字が問題の空白部分になります→>
+    
     .table-responsive
       table#question-set-table.table.table-striped.table-bordered.table-hover
         thead
@@ -14,8 +20,7 @@
               - text = question.body
               - question.answer.split(',').each do |answer|
                 - text.sub!(/_____/, "<#{answer}>")
-              td = text_area_tag 'texts[]', text, size: '80x3'
+              td = text_area_tag 'texts[]', text, size: '130x3', style: 'resize: none', class: 'form-control'
               td = button_tag 'Destroy', { type: 'button', confirm: 'Are you sure?', onclick: "$(this).closest('tr').remove()", class: 'btn btn-default delete' }
-    = button_tag 'New Question', { type: 'button', onclick: 'add_row()', class: 'btn btn-lg btn-primary' }
-    = submit_tag 'Update All Questions', class: 'btn btn-lg btn-success'
-    = button_tag 'Back to Question Set Page', class: 'btn btn-lg btn-default'
+    br = button_tag '+1 Question', { type: 'button', onclick: 'add_row()', class: 'btn btn-lg btn-primary' }
+    br = submit_tag 'Update All Questions', class: 'btn btn-lg btn-success'
