@@ -7,14 +7,23 @@ class QuestionSetsController < ApplicationController
     @question_set = QuestionSet.find(params[:id])
   end
 
+  def new
+    @question_set = QuestionSet.create(user: current_user)
+    redirect_to action: 'edit', id: @question_set.id
+  end
+
   def update
     @question_set = QuestionSet.find(params[:id])
+    @question_set.assign_attributes(title: params[:title], comment: params[:comment])
     @question_set.destroy_all_questions!
+
     params[:texts].each do |text|
       body = text.gsub(/<(.*?)>/, '_____')
       answer = text.scan(/<(.*?)>/).flatten.join(',')
       @question_set.questions << Question.create(body: body, answer: answer)
     end
+
+    @question_set.save!
 
     redirect_to action: 'show', id: params[:id]
   end

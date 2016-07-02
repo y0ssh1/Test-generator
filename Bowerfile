@@ -1,2 +1,4 @@
 asset 'bootstrap'
+asset 'bootstrap-dropdown'
+
 asset 'jquery.selection'

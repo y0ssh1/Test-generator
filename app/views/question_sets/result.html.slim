@@ -1,23 +1,23 @@
-.container
-  = "#{@responses.inject(0) { |sum, r| sum + r.count }}問中"
-  = "#{count_match @responses, @targets.map { |t| t.answer.split(",") }}問正解しました"
-  .table-responsive
-    table.table.table-striped.table-bordered
-      tbody
-        br
-        - @targets.each_with_index do |question, i|
-          tr
-            td
-              - answer = question.answer.split(",")
-              - ss = (question.body + '_____$').split('_____')
-              - ss.pop
-              - ss.each_with_index do |s, j|
-                  = linebreak_to_br s
-                  - if j + 1 != ss.count
-                    - if @responses[i][j] == answer[j]
-                      span style="color: #01DF01"
-                        = "[#{@responses[i][j]}]"
-                    - else
-                      span style="color: #FE2E2E" 
-                        = "[(回答)#{@responses[i][j]}（解答）#{answer[j]}]"
-  = link_to "問題数選択に戻る", question_set_path(@question_set), class: "btn btn-lg btn-primary"
+= "#{@responses.inject(0) { |sum, r| sum + r.count }}問中"
+= "#{count_match @responses, @targets.map { |t| t.answer.split(",") }}問正解しました"
+
+.table-responsive
+  table.table.table-striped.table-bordered
+    tbody
+      br
+      - @targets.each_with_index do |question, i|
+        tr
+          td
+            - answer = question.answer.split(",")
+            - ss = (question.body + '_____$').split('_____')
+            - ss.pop
+            - ss.each_with_index do |s, j|
+                = linebreak_to_br s
+                - if j + 1 != ss.count
+                  - if @responses[i][j] == answer[j]
+                    span style="color: #01DF01"
+                      = "[#{@responses[i][j]}]"
+                  - else
+                    span style="color: #FE2E2E" 
+                      = "[(回答)#{@responses[i][j]}（解答）#{answer[j]}]"
+= link_to "問題数選択に戻る", question_set_path(@question_set), class: "btn btn-lg btn-primary"
