@@ -17,7 +17,7 @@ class QuestionSetsController < ApplicationController
     @question_set.assign_attributes(title: params[:title], comment: params[:comment])
     @question_set.destroy_all_questions!
 
-    params[:texts].each do |text|
+    (params[:texts] || []).each do |text|
       body = text.gsub(/<(.*?)>/, '_____')
       answer = text.scan(/<(.*?)>/).flatten.join(',')
       @question_set.questions << Question.create(body: body, answer: answer)

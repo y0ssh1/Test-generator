@@ -1,10 +1,13 @@
 - if @question_set.owner?(current_user)
   = form_tag @question_set, method: :put do
-    
-    h2 タイトル
-    = text_field_tag :title, '', class: 'form-control'
-    h3 コメント
-    = text_field_tag :comment, '', class: 'form-control'
+  
+    .input-group[style='margin-bottom: 30px']
+       span.input-group-addon タイトル
+       = text_field_tag :title, "#{@question_set.title}", class: 'form-control'
+
+    .input-group[style='margin-bottom: 30px']
+      span.input-group-addon コメント
+      = text_field_tag :comment, "#{@question_set.comment}", class: 'form-control'
     
     p <←で囲まれた文字が問題の空白部分になります→>
     
@@ -20,7 +23,7 @@
               - text = question.body
               - question.answer.split(',').each do |answer|
                 - text.sub!(/_____/, "<#{answer}>")
-              td = text_area_tag 'texts[]', text, size: '130x3', style: 'resize: none', class: 'form-control'
-              td = button_tag 'Destroy', { type: 'button', confirm: 'Are you sure?', onclick: "$(this).closest('tr').remove()", class: 'btn btn-default delete' }
-    br = button_tag '+1 Question', { type: 'button', onclick: 'add_row()', class: 'btn btn-lg btn-primary' }
-    br = submit_tag 'Update All Questions', class: 'btn btn-lg btn-success'
+              td = text_area_tag 'texts[]', text, size: '130x3', style: 'resize: none', class: 'form-control question_text_field'
+              td = button_tag 'Destroy', type: 'button', id: 'delete-question-button', class: 'btn btn-default delete'
+    div.text-center[style='margin-bottom: 50px'] = button_tag '+1 Question', type: 'button', id: 'add-question-button', class: 'btn btn-lg btn-primary'
+    div.text-center = submit_tag 'Update All Questions', class: 'btn btn-lg btn-success'
