@@ -1,16 +1,18 @@
-.container
-  - if user_signed_in?
-    = "Logged in as #{current_user.email}"
-    = link_to "設定", edit_user_registration_path, :class => "navbar-link"
-    = link_to "ログアウト", destroy_user_session_path, method: :get, :class => "navbar-link"
-  - else
-    = link_to "登録", new_user_registration_path, :class => 'navbar-link'
-    = link_to "ログイン", new_user_session_path, :class => 'navbar-link'
+.jumbotron
+  h2 このサイトでできること
+  p.lead
+    | このサイトでは穴埋め問題を解いて採点することができます。
+    | アカウントを作成することで、自分で問題集を作ることもできます。
+    | ぜひ色々な問題を作ってみてください。
 
-  .table-responsive
-    table.table.table-striped.table-bordered
-      tbody
-        - QuestionSet.all.each do |question_set|
-          tr
-            td = link_to question_set.title, question_set_path(question_set)
-            td = question_set.comment
+.table-responsive
+  table.table.table-striped.table-bordered
+    thead
+      tr
+        td タイトル
+        td コメント
+    tbody
+      - QuestionSet.all.each do |question_set|
+        tr
+          td = link_to question_set.title, question_set_path(question_set)
+          td = question_set.comment

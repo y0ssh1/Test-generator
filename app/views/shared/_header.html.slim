@@ -1,32 +1,24 @@
-nav.navbar.navbar-default.navbar-fixed-top
+nav.navbar.navbar-default
   .container
     .navbar-header
-      button.navbar-toggle.collapsed[type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"]
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand[href="#{root_path}"] Esame di italiano
-    #navbar.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li
-          a[href="/questions"] Edit
-        li
-          a[href="#contact"] Contact
-    / ログイン前は[ログイン または 新規登録]を表示し、ログインしたらドロップダウンメニューでデッキの追加・編集・ログアウトが出来るようにする
-    /     li.dropdown
-    /       a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-expanded="false"] Dropdown
-    /         span.caret
-    /       ul.dropdown-menu[role="menu"]
-    /         li
-    /           a[href="#"] Action
-    /         li
-    /           a[href="#"] Another action
-    /         li
-    /           a[href="#"] Something else here
-    /         li.divider
-    /         li.dropdown-header Nav header
-    /         li
-    /           a[href="#"] Separated link
-    /         li
-    /           a[href="#"] One more separated link
+      a.navbar-brand href="#{root_path}" Esame di italiano
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          li.dropdown
+            a.dropdown-toggle[data-toggle="dropdown" role="button"]
+              | メニュー
+              span.caret
+            ul.dropdown-menu
+              li
+                a href="#{new_question_set_path}" 問題集の作成
+              li
+                a href="#{edit_user_registration_path}" 設定
+              li.divider role="separator" 
+              li
+                a href="#{destroy_user_session_path}" ログアウト
+        - else
+          li
+            = link_to "ログイン", new_user_session_path
+          li
+            = link_to "ユーザ登録", new_user_registration_path
