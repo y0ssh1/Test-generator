@@ -3,7 +3,7 @@ class QuestionSet < ActiveRecord::Base
   has_many :questions, dependent: :destroy
 
   def owner?(u)
-    u && u == user
+    u == user
   end
 
   def destroy_all_questions!
