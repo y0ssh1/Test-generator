@@ -26,9 +26,7 @@ $ ->
       if $(@).closest('tr').is $('table#question-set-table > tbody > tr:last')
         add_row()
         focus_next_text_field($(@))
-      else
-        return true
-      return false
+        return false
     return true
 
   $(document).on 'click', '#add-question-button', ->
