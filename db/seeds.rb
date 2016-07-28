@@ -496,6 +496,6 @@ set.save!
 user.question_sets << set
 user.save!
 
-100.times do |i|
-  QuestionSet.create(title: "問題集#{i}", comment: "やらないでいい")
+["s","j","k","m","a"].each do |i|
+  QuestionSet.create(title: "#{i}", comment: "やらないでいい")
 end
